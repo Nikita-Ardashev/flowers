@@ -1,0 +1,65 @@
+.card-flower {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-flower img {
+  width: 220px;
+  height: 240px;
+}
+
+.card-flower > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-flower > div p {
+  width: 100%;
+  font-family: "ABeeZee";
+  font-size: 16px;
+  line-height: 18.91px;
+  text-align: left;
+}
+
+.card-flower > div > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-flower > div > div p {
+  font-family: "ABeeZee";
+  font-size: 16px;
+  line-height: 16px;
+  text-align: left;
+}
+
+.card-flower > div > div p:first-child {
+  text-decoration: line-through;
+  color: #828282;
+}
+
+.card-flower > div > div p:last-child {
+  color: #ff0a43;
+}
+
+.card-flower > div > div input {
+  background: transparent;
+  padding: 8px 12px;
+  border-radius: 16px;
+  border: 1px solid #184404;
+  color: #184404;
+  font-family: "ABeeZee";
+  font-size: 12px;
+  line-height: 8.27px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.card-flower > div > div input:hover {
+  color: white;
+  background: #184404;
+}

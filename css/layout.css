@@ -1,0 +1,195 @@
+* {
+  border: 0;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  transition: 0.4s;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  padding: 0 10%;
+  display: flex;
+  flex-direction: column;
+  background: #f7fdf7;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+header .first,
+header .second {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #0000004d;
+  padding-bottom: 16px;
+}
+
+header .first {
+  padding: 12px 10% 16px;
+  margin-bottom: 64px;
+}
+
+header .first > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+header .first a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  font-family: "Inter-Regular";
+  font-size: 18px;
+  line-height: 21.78px;
+  text-align: left;
+  color: black;
+}
+
+header .first a:hover::before {
+  background: #184404;
+}
+
+header .first a::before {
+  content: "";
+  display: block;
+  width: 12px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #0000003b;
+  transition: 0.4s;
+}
+
+header .second {
+}
+
+header .second a,
+header .second a span {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  font-family: "ABeeZee";
+  font-size: 18px;
+  line-height: 15.37px;
+  text-align: left;
+  color: #184404;
+}
+header .number {
+}
+header .search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 16px;
+  border: 1px solid black;
+  background: white;
+  width: 100%;
+  max-width: 292px;
+}
+
+header .search input {
+  font-family: "Inter-Bold";
+  font-size: 15px;
+  line-height: 18.15px;
+  text-align: left;
+  color: black;
+}
+
+header .search input::placeholder {
+  color: #00000021;
+}
+
+header .search img {
+  cursor: pointer;
+}
+
+header .buy span {
+  font-family: "Inter-Bold" !important;
+  font-size: 19px !important;
+  line-height: 22.99px !important;
+}
+
+header .thrid {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+header .thrid a,
+header .thrid p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inter-Regular";
+  font-size: 17px;
+  line-height: 20.57px;
+  text-align: center;
+  color: #616161;
+  padding: 12px;
+  width: 100%;
+}
+
+header .thrid p {
+  cursor: pointer;
+  padding: 12px 0 !important;
+}
+
+header .thrid a:hover,
+header .thrid p:hover,
+.header-dropdown:hover > p {
+  color: white;
+  background: #184404;
+}
+
+.header-dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.header-dropdown:hover > .items {
+  display: flex;
+}
+
+.header-dropdown .items {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: max-content;
+  background: white;
+}
+
+.header-dropdown .items > a {
+  justify-content: flex-start;
+  text-align: left !important;
+  width: auto;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 64px 0;
+}

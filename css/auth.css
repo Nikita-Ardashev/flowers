@@ -1,0 +1,90 @@
+main {
+  gap: 32px;
+  width: max-content !important;
+  padding-top: 32px !important;
+}
+
+main h1 {
+  font-family: "Inter-Regular";
+  font-size: 40px;
+  line-height: 48.41px;
+  text-align: left;
+  width: 100%;
+}
+main p {
+  font-family: "ABeeZee";
+  font-size: 16px;
+  line-height: 15.37px;
+  text-align: left;
+}
+main > form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+main > form > p {
+  max-width: 100%;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  max-width: 256px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.field input {
+  padding: 8px;
+  background: white;
+  border: 1px solid black;
+  width: 204px;
+  font-family: "Inter-Regular";
+  font-size: 16px;
+  line-height: 18.15px;
+  text-align: left;
+  color: black;
+  width: -webkit-fill-available;
+}
+
+main label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+main label input {
+  background: white;
+  border: 1px solid black;
+  width: 16px;
+  height: 16px;
+}
+
+main input[type="submit"] {
+  font-family: "ABeeZee";
+  font-size: 20px;
+  line-height: 16.55px;
+  text-align: center;
+  color: black;
+  border: 1px solid black;
+  border-radius: 16px;
+  width: max-content;
+  padding: 8px 16px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 256px;
+}
+main input[type="submit"]:hover {
+  background: black;
+  color: white;
+}
