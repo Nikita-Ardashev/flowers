@@ -1,6 +1,6 @@
 main {
   gap: 42px;
-  align-items: center;
+  align-items: flex-start;
 }
 
 main h1 {

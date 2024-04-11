@@ -25,7 +25,9 @@
                 while ($item = $items->fetch_assoc()) {
                     ?>
                     <div class="card-flower" data-flower-id="flower-<?php print_r($item['id']) ?>">
-                        <img src="<?php print_r($item['id']) ?>" alt="">
+                        <a href="/views/item.php?id=<?php print_r($item['id']) ?>"> <img src="<?php print_r($item['id']) ?>"
+                                alt="">
+                        </a>
                         <div>
                             <p><?php print_r($item['name']) ?> </p>
                             <div>

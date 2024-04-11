@@ -1,7 +1,8 @@
 const toBasketBtns = document.querySelectorAll(".to-basket");
 const headerBasket = document.querySelector("header .buy span");
 const toBasket = (b) => {
-  b.onclick = () => {
+  b.onclick = (e) => {
+    e.preventDefault();
     const card = b.closest(".card-flower");
     const flowerId = card.dataset.flowerId;
     const count = card.querySelector(".calc input")?.value ?? 1;

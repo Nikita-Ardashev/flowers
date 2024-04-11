@@ -18,7 +18,7 @@
     ?>
     <main>
         <div class="swiper">
-            <swiper-container slides-per-view="1" pagination="true" pagination="true" space-between="0">
+            <swiper-container slides-per-view="1" pagination="true" navigation="true" space-between="0">
                 <swiper-slide><img src="/assets/img/swiper/1.jpg"></swiper-slide>
                 <swiper-slide><img src="/assets/img/swiper/2.jpg"></swiper-slide>
             </swiper-container>

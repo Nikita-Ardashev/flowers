@@ -18,6 +18,11 @@
   object-fit: cover;
 }
 
+/* .swiper-button-prev,
+.swiper-button-next {
+  color: #184404 !important;
+} */
+
 /* .swiper-pagination-bullet-active {
   background: #184404 !important;
 } */

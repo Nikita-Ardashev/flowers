@@ -11,15 +11,24 @@
 <body>
     <?php
     include_once ('../assets/ui/header.php');
+    include_once ('../php/link.php');
+    $id = $_GET['id'];
+    $queryItem = $link->query("SELECT * FROM `items` WHERE `id`='$id'");
+    $queryDes = $link->query("SELECT * FROM `flower_description` WHERE `flower_id`='$id'");
+    if ($queryItem->num_rows == 0) {
+        $link->close();
+        header('Location: ./home.php');
+    }
+    $item = $queryItem->fetch_assoc();
     ?>
-    <main class='card-flower' data-flower-id="flower-1">
+    <main class='card-flower' data-flower-id="flower-<?php print_r($item['id']) ?>">
         <img class="image" src="" alt="">
         <div class="info">
-            <h1>Букет “Леди”</h1>
+            <h1><?php print_r($item['name']) ?></h1>
             <div class="buy">
                 <span>
-                    <p>3 590 </p>
-                    <p>2 100</p>
+                    <p><?php print_r($item['cost'] + ($item['discount'] / 100 * $item['cost'])) ?>₽</p>
+                    <p><?php print_r($item['cost']) ?>₽</p>
                 </span>
                 <div class="calc">
                     <button class="minus"></button>
@@ -31,10 +40,14 @@
             <div class="content">
                 <ul>
                     <p>Состав букета:</p>
-                    <li>Диантус: 25 шт</li>
-                    <li>Гипсофила: 3 шт</li>
+                    <?php
+                    while ($description = $queryDes->fetch_assoc()) {
+                        ?>
+                        <li><?php print_r($description['name']) ?>: <?php print_r($description['count']) ?></li>
+                        <?php
+                    }
+                    ?>
                 </ul>
-                <!-- <p>Упаковка: Пленка матовая, Лента атласная</p> -->
                 <p>К каждому букету/композиции в подарок мы прикладываем:</p>
                 <span>
                     <p>Средство для продления жизни цветов “Bona Forte”</p>

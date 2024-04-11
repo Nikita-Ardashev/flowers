@@ -11,7 +11,7 @@ const calculate = (c) => {
     }
   };
   const newCost = (plus = true) => {
-    const lastCost = card.closest("div").querySelector(".cost") ?? null;
+    const lastCost = card.closest("div")?.querySelector(".cost") ?? null;
     if (lastCost !== null) {
       const firstCost = card.dataset.firstCost;
       lastCost.textContent = Number(firstCost) * count.value + "₽";
