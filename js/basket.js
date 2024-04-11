@@ -45,10 +45,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const deleteItem = (t) => {
     t.onclick = () => {
       const flower = t.closest(".card-flower");
+      const cost = Number(
+        flower.querySelector(".info .cost").textContent.slice(0, -1)
+      );
       const flowerId = flower.dataset.flowerId;
       flower.remove();
       deleteCookie(flowerId);
       basket.textContent = Number(basket.textContent) - 1;
+      const price = document.querySelector("main .buy p b");
+      const fullprice = Number(price.textContent.slice(0, -1)) - cost;
+      price.textContent = `${fullprice}₽`;
     };
   };
 

@@ -14,7 +14,7 @@ const calculate = (c) => {
     const lastCost = card.closest("div").querySelector(".cost") ?? null;
     if (lastCost !== null) {
       const firstCost = card.dataset.firstCost;
-      lastCost.textContent = Number(firstCost) * count.value;
+      lastCost.textContent = Number(firstCost) * count.value + "₽";
       const price = document.querySelector("main .buy p b");
       if (plus) {
         const fullprice =
