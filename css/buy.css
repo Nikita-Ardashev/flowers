@@ -16,6 +16,7 @@ main > div > div {
   display: flex;
   flex-direction: column;
   gap: 64px;
+  position: relative;
 }
 
 main h1 {
@@ -24,6 +25,19 @@ main h1 {
   line-height: 37.82px;
   text-align: left;
   padding-left: 316px;
+}
+
+main h2 {
+  display: none;
+  padding-top: 32px;
+  font-family: "ABeeZee";
+  font-size: 16px;
+  text-align: center;
+  width: 100%;
+}
+
+main h2:only-child {
+  display: block;
 }
 
 .items {
@@ -38,7 +52,8 @@ main h1 {
   align-items: center;
   justify-content: flex-end;
   position: absolute;
-  bottom: calc(100% - 1px);
+  /* bottom: calc(100% - 1px); */
+  top: 72px;
   right: 0;
 }
 
@@ -67,6 +82,17 @@ main h1 {
   flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
+  position: relative;
+}
+
+.item .trash {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: url(/assets/img/trash.svg) center no-repeat;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 
 .item .flower {

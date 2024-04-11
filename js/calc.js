@@ -10,12 +10,30 @@ const calculate = (c) => {
       setCookie(flowerId, value);
     }
   };
+  const newCost = (plus = true) => {
+    const lastCost = card.closest("div").querySelector(".cost") ?? null;
+    if (lastCost !== null) {
+      const firstCost = card.dataset.firstCost;
+      lastCost.textContent = Number(firstCost) * count.value;
+      const price = document.querySelector("main .buy p b");
+      if (plus) {
+        const fullprice =
+          Number(price.textContent.slice(0, -1)) + Number(firstCost);
+        price.textContent = `${fullprice}₽`;
+      } else {
+        const fullprice =
+          Number(price.textContent.slice(0, -1)) - Number(firstCost);
+        price.textContent = `${fullprice}₽`;
+      }
+    }
+  };
   m.onclick = () => {
     if (count.value <= 1) {
       return;
     }
     count.value--;
     newCountCookie(count.value);
+    newCost(false);
   };
   p.onclick = () => {
     if (count.value >= 100) {
@@ -23,6 +41,7 @@ const calculate = (c) => {
     }
     count.value++;
     newCountCookie(count.value);
+    newCost();
   };
   count.onchange = () => {
     if (count.value > 100) {
@@ -32,6 +51,7 @@ const calculate = (c) => {
       count.value = 1;
     }
     newCountCookie(count.value);
+    newCost();
   };
 };
 

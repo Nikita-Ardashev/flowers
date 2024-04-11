@@ -16,19 +16,34 @@
     <main>
         <h1>Каталог</h1>
         <div>
-            <div class="card-flower">
-                <img src="" alt="">
-                <div>
-                    <p>Букет “Мишель” </p>
-                    <div>
-                        <span>
-                            <p>4 250</p>
-                            <p>2 200</p>
-                        </span>
-                        <input type="button" class="to-basket" value="Купить">
+            <?php
+            include_once ('../php/link.php');
+            $isSearch = isset($_GET['search']);
+            $category = $_GET['type'] ?? $_GET['search'];
+            $items = $link->query("SELECT * FROM `items` WHERE `type`='$category'");
+            if ($items->num_rows > 0) {
+                while ($item = $items->fetch_assoc()) {
+                    ?>
+                    <div class="card-flower" data-flower-id="flower-<?php print_r($item['id']) ?>">
+                        <img src="<?php print_r($item['id']) ?>" alt="">
+                        <div>
+                            <p><?php print_r($item['name']) ?> </p>
+                            <div>
+                                <span>
+                                    <p><?php print_r($item['cost'] + ($item['discount'] / 100 * $item['cost'])) ?></p>
+                                    <p><?php print_r($item['cost']) ?></p>
+                                </span>
+                                <input type="button" class="to-basket" value="Купить">
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                    <?php
+                }
+            } else {
+                echo ('Пока нет таких товаров');
+            }
+            $link->close();
+            ?>
         </div>
     </main>
 </body>

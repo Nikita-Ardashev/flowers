@@ -37,44 +37,44 @@
         <div class="header-dropdown">
             <p>Повод</p>
             <div class="items">
-                <a href="/views/catalog.php?category=birthday">ДЕНЬ РОЖДЕНИЯ</a>
-                <a href="/views/catalog.php?category=mothersDay">ДЕНЬ МАТЕРИ</a>
-                <a href="/views/catalog.php?category=MarchDay">8 МАРТА</a>
+                <a href="/views/catalog.php?type=birthday">ДЕНЬ РОЖДЕНИЯ</a>
+                <a href="/views/catalog.php?type=mothersDay">ДЕНЬ МАТЕРИ</a>
+                <a href="/views/catalog.php?type=MarchDay">8 МАРТА</a>
             </div>
         </div>
         <div class="header-dropdown">
             <p>Цветы</p>
             <div class="items">
-                <a href="/views/catalog.php?category=roses">РОЗЫ</a>
-                <a href="/views/catalog.php?category=gypsophila">ГИПСОФИЛА</a>
-                <a href="/views/catalog.php?category=pions">ПИОНЫ</a>
-                <a href="/views/catalog.php?category=hydrangeas">ГОРТЕНЗИИ</a>
-                <a href="/views/catalog.php?category=tulips">ТЮЛЬПАНЫ</a>
+                <a href="/views/catalog.php?type=roses">РОЗЫ</a>
+                <a href="/views/catalog.php?type=gypsophila">ГИПСОФИЛА</a>
+                <a href="/views/catalog.php?type=pions">ПИОНЫ</a>
+                <a href="/views/catalog.php?type=hydrangeas">ГОРТЕНЗИИ</a>
+                <a href="/views/catalog.php?type=tulips">ТЮЛЬПАНЫ</a>
             </div>
         </div>
         <div class="header-dropdown">
             <p>Букеты</p>
             <div class="items">
-                <a href="/views/catalog.php?category=upTo1500">БУКЕТЫ ДО 1500 РУБ</a>
-                <a href="/views/catalog.php?category=upTo3000">БУКЕТЫ ДО 1500 - 3000 РУБ</a>
+                <a href="/views/catalog.php?type=upTo1500">БУКЕТЫ ДО 1500 РУБ</a>
+                <a href="/views/catalog.php?type=upTo3000">БУКЕТЫ ДО 1500 - 3000 РУБ</a>
             </div>
         </div>
         <div class="header-dropdown">
             <p>Подарки</p>
             <div class="items">
-                <a href="/views/catalog.php?category=postcards">ОТКРЫТКИ</a>
-                <a href="/views/catalog.php?category=heliumBaloons">ГЕЛИЕВЫЕ ШАРЫ</a>
-                <a href="/views/catalog.php?category=candies">СЛАДКИЕ НАБОРЫ/КОНФЕТЫ</a>
+                <a href="/views/catalog.php?type=postcards">ОТКРЫТКИ</a>
+                <a href="/views/catalog.php?type=heliumBaloons">ГЕЛИЕВЫЕ ШАРЫ</a>
+                <a href="/views/catalog.php?type=candies">СЛАДКИЕ НАБОРЫ/КОНФЕТЫ</a>
             </div>
         </div>
-        <a href="/views/catalog.php?category=bouquetsBoxes">
+        <a href="/views/catalog.php?type=bouquetsBoxes">
             Букеты в
             коробках
         </a>
-        <a href="/views/catalog.php?category=pottedFlower">
+        <a href="/views/catalog.php?type=pottedFlower">
             Горшечный цветок
         </a>
-        <a href="/views/catalog.php?category=boxesAndBaskets">Ящики и корзины</a>
+        <a href="/views/catalog.php?type=boxesAndBaskets">Ящики и корзины</a>
     </div>
 </header>
 <script src='/js/basket.js'></script>

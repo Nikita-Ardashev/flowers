@@ -28,12 +28,31 @@ function setCookie(name, value, options = {}) {
   }
   document.cookie = updatedCookie;
 }
+
+function deleteCookie(name) {
+  setCookie(name, "", {
+    "max-age": -1,
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const arrCookie = document.cookie.split(";");
   const arrFlowers = arrCookie.filter(
     (f) => f.split("-")[0].trim() === "flower"
   );
   basket.textContent = arrFlowers.length;
+  const trashs = document.querySelectorAll(".items .trash");
+  const deleteItem = (t) => {
+    t.onclick = () => {
+      const flower = t.closest(".card-flower");
+      const flowerId = flower.dataset.flowerId;
+      flower.remove();
+      deleteCookie(flowerId);
+      basket.textContent = Number(basket.textContent) - 1;
+    };
+  };
+
+  trashs.forEach(deleteItem);
 });
 
 const postBuy = async () => {
