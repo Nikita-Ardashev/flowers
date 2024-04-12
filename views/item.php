@@ -22,12 +22,16 @@
     $item = $queryItem->fetch_assoc();
     ?>
     <main class='card-flower' data-flower-id="flower-<?php print_r($item['id']) ?>">
-        <img class="image" src="" alt="">
+        <div class="box-image">
+            <img class="image" src="<?php print_r($item['img']) ?>" alt="">
+        </div>
         <div class="info">
             <h1><?php print_r($item['name']) ?></h1>
             <div class="buy">
                 <span>
-                    <p><?php print_r($item['cost'] + ($item['discount'] / 100 * $item['cost'])) ?>₽</p>
+                    <?php if ($item['discount'] != null) { ?>
+                        <p><?php print_r($item['cost'] + ($item['discount'] / 100 * $item['cost'])) ?>₽</p>
+                    <?php } ?>
                     <p><?php print_r($item['cost']) ?>₽</p>
                 </span>
                 <div class="calc">

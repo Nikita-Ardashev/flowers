@@ -86,8 +86,9 @@
 .discount > div {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  overflow-x: auto;
+  overflow-y: clip;
   align-items: center;
-  justify-content: space-between;
-  gap: 64px;
+  gap: 32px;
+  padding-bottom: 8px;
 }

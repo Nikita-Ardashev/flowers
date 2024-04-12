@@ -38,23 +38,27 @@
                         }
                         $id = $arr[1];
                         $item = $link->query("SELECT * FROM `items` WHERE `id`='$id'")->fetch_assoc();
-                        $lastCost += $item['cost'] * $value;
+                        $lastCost += $item['discount'] != null ? $item['cost'] + ($item['discount'] / 100 * $item['cost']) : $item['cost'] * $value;
                         ?>
                         <div class="item card-flower" data-flower-id="flower-<?php print_r($item['id']) ?>"
                             data-first-cost='<?php print_r($item['cost']) ?>'>
                             <input type="button" class="trash">
 
-                            <div class="flower">
-                                <img src="" alt="">
+                            <a href="/views/item.php?id=<?php print_r($item['id']) ?>" class="flower">
+                                <img src="<?php print_r($item['img']) ?>" alt="">
                                 <p><?php print_r($item['name']) ?></p>
-                            </div>
+                            </a>
                             <div class="info">
                                 <div class="calc">
                                     <button class="minus" type='button'></button>
                                     <input type="number" value='<?php print_r($value) ?>' min="1" max="100">
                                     <button class="plus" type='button'></button>
                                 </div>
-                                <p class="cost"><?php print_r($item['cost'] * $value) ?>₽</p>
+                                <p class="cost">
+                                    <span><?php
+                                    print_r($item['discount'] != null ? $item['cost'] + ($item['discount'] / 100 * $item['cost']) : $item['cost']);
+                                    ?></span> ₽
+                                </p>
                             </div>
                         </div>
 
@@ -66,7 +70,7 @@
             </div>
 
             <div class="buy">
-                <p>Итого:<b><?php print_r($lastCost) ?>₽</b></p>
+                <p>Итого:<b><span><?php print_r($lastCost) ?></span> ₽</b></p>
                 <input type="button" value="Оформить заказ" onclick="postBuy()">
             </div>
         </div>

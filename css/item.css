@@ -1,11 +1,18 @@
 main {
   flex-direction: row !important;
   gap: 32px;
+  flex-wrap: wrap;
+}
+
+.box-image {
+  width: max(440px, 600px);
+  aspect-ratio: 1 / 1;
 }
 
 .image {
-  width: 408px;
-  height: 520px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .info {
@@ -39,7 +46,7 @@ main .buy span p {
   text-align: left;
 }
 
-main .buy span p:first-child {
+main .buy span p:not(:only-child):first-child {
   text-decoration: line-through;
   color: #828282;
 }

@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  flex-shrink: 0;
 }
 
 .card-flower img {
@@ -38,7 +39,7 @@
   text-align: left;
 }
 
-.card-flower > div > div p:first-child {
+.card-flower > div > div p:not(:only-child):first-child {
   text-decoration: line-through;
   color: #828282;
 }

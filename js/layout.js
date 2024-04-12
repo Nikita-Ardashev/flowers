@@ -35,28 +35,46 @@ function deleteCookie(name) {
   });
 }
 
+const deleteItem = (t) => {
+  t.onclick = () => {
+    const flower = t.closest(".card-flower");
+    const cost = Number(flower.querySelector(".info .cost span").textContent);
+    const flowerId = flower.dataset.flowerId;
+    basket.textContent = Number(basket.textContent) - 1;
+    const price = document.querySelector("main .buy p b span");
+    const fullprice = Number(price.textContent) - cost;
+    price.textContent = fullprice;
+    flower.remove();
+    deleteCookie(flowerId);
+  };
+};
+
+const searchItem = async (box) => {
+  const input = box.querySelector('input[type="text"]');
+  const btn = box.querySelector("button");
+  const search = () => {
+    const value = input.value.trim();
+    if (value === "") return;
+    window.location.href =
+      window.location.origin + "/views/catalog.php?search=" + value;
+  };
+  btn.onclick = search;
+  document.addEventListener("keypress", (e) => {
+    if (e.code === "Enter") {
+      search();
+    }
+  });
+};
+
 document.addEventListener("DOMContentLoaded", () => {
+  const searchBox = document.querySelector("header .search");
+  searchItem(searchBox);
   const arrCookie = document.cookie.split(";");
   const arrFlowers = arrCookie.filter(
     (f) => f.split("-")[0].trim() === "flower"
   );
   basket.textContent = arrFlowers.length;
   const trashs = document.querySelectorAll(".items .trash");
-  const deleteItem = (t) => {
-    t.onclick = () => {
-      const flower = t.closest(".card-flower");
-      const cost = Number(
-        flower.querySelector(".info .cost").textContent.slice(0, -1)
-      );
-      const flowerId = flower.dataset.flowerId;
-      flower.remove();
-      deleteCookie(flowerId);
-      basket.textContent = Number(basket.textContent) - 1;
-      const price = document.querySelector("main .buy p b");
-      const fullprice = Number(price.textContent.slice(0, -1)) - cost;
-      price.textContent = `${fullprice}₽`;
-    };
-  };
 
   trashs.forEach(deleteItem);
 });

@@ -27,10 +27,10 @@
             class="nav"><img src="/assets/img/marker.svg" alt="marker"><span>Ижевск ул. Ленина
                 62</span></a>
         <a href="tel:+79124584746" class="number"><img src="/assets/img/phone.svg" alt="phone">+7 (912) 458 47 46</a>
-        <label class="search">
+        <div class="search">
             <input type="text" placeholder="Найти букетик">
-            <img src="/assets/img/search.svg" alt="search">
-        </label>
+            <button><img src="/assets/img/search.svg" alt="search"></button>
+        </div>
         <a href="/views/buy.php" class="buy"><img src="/assets/img/buy.svg" alt="buy"><span>0</span></a>
     </div>
     <div class="thrid">
@@ -77,4 +77,4 @@
         <a href="/views/catalog.php?type=boxesAndBaskets">Ящики и корзины</a>
     </div>
 </header>
-<script src='/js/basket.js'></script>
+<script src='/js/layout.js'></script>
