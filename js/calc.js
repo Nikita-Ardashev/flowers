@@ -11,19 +11,18 @@ const calculate = (c) => {
     }
   };
   const newCost = (plus = true) => {
-    const lastCost = card.closest("div")?.querySelector(".cost") ?? null;
+    const lastCost = card.closest("div")?.querySelector(".cost span") ?? null;
     if (lastCost !== null) {
-      const firstCost = card.dataset.firstCost;
-      lastCost.textContent = Number(firstCost) * count.value + "₽";
-      const price = document.querySelector("main .buy p b");
+      const firstCost = Number(card.dataset.firstCost);
+      lastCost.textContent = Number(firstCost) * count.value;
+      const price = document.querySelector("main .buy p b span");
+      const priceInt = Number(price.textContent.trim());
       if (plus) {
-        const fullprice =
-          Number(price.textContent.slice(0, -1)) + Number(firstCost);
-        price.textContent = `${fullprice}₽`;
+        const fullprice = priceInt + firstCost;
+        price.textContent = fullprice;
       } else {
-        const fullprice =
-          Number(price.textContent.slice(0, -1)) - Number(firstCost);
-        price.textContent = `${fullprice}₽`;
+        const fullprice = priceInt - firstCost;
+        price.textContent = fullprice;
       }
     }
   };
