@@ -42,6 +42,25 @@
                 </div>
             </div>
         </div>
+        <div class="orders">
+            <?php
+            include_once ('../php/link.php');
+            $orders = $link->query("SELECT * FROM `purchase`");
+            while ($order = $orders->fetch_assoc()) {
+                ?>
+                <div class="order">
+                    <h2></h2>
+                    <div>
+                        <ul>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <p>Стоимость ₽</p>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
     </main>
 </body>
 <script src="/js/orders.js"></script>
