@@ -10,6 +10,6 @@ if (count($user) == 0) {
     exit();
 }
 setcookie('email', $user['email'], time() + 3600 * 8, "/");
-header("Location: ../views/home.php");
+header("Location: /");
 mysqli_close($link);
 ?>

@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/css/layout.css">
 <header>
     <nav class="first">
-        <a href="/views/home.php">Акции</a>
+        <a href="/#discount">Акции</a>
         <a href="/views/delivery.php">Доставка</a>
         <a href="/views/contact.php">Контакты</a>
         <div>
@@ -21,14 +21,14 @@
         </div>
     </nav>
     <div class="second">
-        <a href="/views/home.php"><img src="/assets/img/logo.png" alt="logo"></a>
+        <a href="/"><img src="/assets/img/logo.png" alt="logo"></a>
         <a target="_blank"
             href="https://yandex.ru/maps/44/izhevsk/house/ulitsa_lenina_62/YUoYdAVkSUYGQFtsfXR1dXRhYQ==/?ll=53.224030%2C56.844826&z=17"
             class="nav"><img src="/assets/img/marker.svg" alt="marker"><span>Ижевск ул. Ленина
                 62</span></a>
         <a href="tel:+79124584746" class="number"><img src="/assets/img/phone.svg" alt="phone">+7 (912) 458 47 46</a>
         <div class="search">
-            <input type="text" value="<?php print_r($_GET['search'] ?? '') ?>" placeholder="Найти букетик">
+            <input type="text" value="<?php echo ($_GET['search'] ?? '') ?>" placeholder="Найти букетик">
             <button><img src="/assets/img/search.svg" alt="search"></button>
         </div>
         <a href="/views/buy.php" class="buy"><img src="/assets/img/buy.svg" alt="buy"><span>0</span></a>

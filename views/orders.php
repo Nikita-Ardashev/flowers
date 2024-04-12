@@ -45,20 +45,51 @@
         <div class="orders">
             <?php
             include_once ('../php/link.php');
-            $orders = $link->query("SELECT * FROM `purchase`");
-            while ($order = $orders->fetch_assoc()) {
+            $ordersQuery = $link->query("SELECT * FROM `purchase`");
+            $data = mysqli_fetch_all($ordersQuery, MYSQLI_ASSOC);
+            $result = array_reduce($data, function ($acc, $item) {
+                $acc[$item['user_id']][] = $item;
+                return $acc;
+            }, []);
+            // $result = array_reduce(($result), function ($acc, $item) {
+            //     $acc[$item['created_at']][] = $item;
+            //     return $acc;
+            // }, []);
+            $orders = array_values($result);
+            foreach ($orders as $order) {
+                $onlyUser = $order[0];
+                $user = $link->query("SELECT * FROM `users` WHERE `id`='$onlyUser[user_id]'")->fetch_assoc();
+                $date = $order[0]['created_at'];
                 ?>
-                <div class="order">
-                    <h2></h2>
-                    <div>
-                        <ul>
-                            <li></li>
-                        </ul>
+                <div class="modal-box">
+                    <div class="modal">
+                        <input type="button" class="close-cross close">
+                        <h3><?php echo ($user['email']) ?></h3>
                     </div>
-                    <p>Стоимость ₽</p>
+                </div>
+                <div class="order">
+                    <input type="button" class="edit">
+                    <input type="button" class="delete">
+                    <h2><?php echo ($user['email']) ?></h2>
+                    <ul>
+                        <?php
+                        $lastCost = 0;
+                        foreach ($order as $item) {
+                            $itemQuery = $link->query("SELECT * FROM `items` WHERE `id`='$item[item_id]'")->fetch_assoc();
+                            $lastCost += $itemQuery['discount'] != null ? $itemQuery['cost'] - ($itemQuery['discount'] * $itemQuery['cost'] / 100) : $itemQuery['cost'];
+                            ?>
+                            <li><?php echo ($itemQuery['name'] . ' - ' . $item['count']) ?>шт <p>Дата создания:
+                                    <?php echo ($date) ?>
+                                </p>
+                            </li>
+                            <?php
+                        } ?>
+                    </ul>
+                    <p>Стоимость <?php echo ($lastCost) ?> ₽</p>
                 </div>
                 <?php
             }
+            $link->close();
             ?>
         </div>
     </main>

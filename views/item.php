@@ -21,18 +21,18 @@
     }
     $item = $queryItem->fetch_assoc();
     ?>
-    <main class='card-flower' data-flower-id="flower-<?php print_r($item['id']) ?>">
+    <main class='card-flower' data-flower-id="flower-<?php echo ($item['id']) ?>">
         <div class="box-image">
-            <img class="image" src="<?php print_r($item['img']) ?>" alt="">
+            <img class="image" src="<?php echo ($item['img']) ?>" alt="">
         </div>
         <div class="info">
-            <h1><?php print_r($item['name']) ?></h1>
+            <h1><?php echo ($item['name']) ?></h1>
             <div class="buy">
                 <span>
                     <?php if ($item['discount'] != null) { ?>
-                        <p><?php print_r($item['cost'] + ($item['discount'] / 100 * $item['cost'])) ?>₽</p>
+                        <p><?php echo ($item['cost']) ?>₽</p>
                     <?php } ?>
-                    <p><?php print_r($item['cost']) ?>₽</p>
+                    <p><?php echo ($item['cost'] - ($item['discount'] / 100 * $item['cost'])) ?>₽</p>
                 </span>
                 <div class="calc">
                     <button class="minus"></button>
@@ -47,7 +47,7 @@
                     <?php
                     while ($description = $queryDes->fetch_assoc()) {
                         ?>
-                        <li><?php print_r($description['name']) ?>: <?php print_r($description['count']) ?></li>
+                        <li><?php echo ($description['name']) ?>: <?php echo ($description['count']) ?></li>
                         <?php
                     }
                     ?>

@@ -20,6 +20,7 @@ main .dropdown {
   position: relative;
   width: 100%;
   max-width: 152px;
+  z-index: 10;
 }
 
 .dropdown label {
@@ -104,4 +105,123 @@ main .dropdown {
 
 .dropdown > .items > span:hover {
   background: rgba(0, 0, 0, 0.1);
+}
+
+.modal-box {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: max-content;
+  max-width: 500px;
+  max-height: 782px;
+  padding: 40px 32px;
+  gap: 32px;
+  border-radius: 8px;
+  background: white;
+  position: relative;
+  overflow-y: auto;
+}
+
+.modal::-webkit-scrollbar-track,
+.modal::-webkit-scrollbar-thumb,
+.modal textarea.field::-webkit-scrollbar-track,
+.modal textarea.field::-webkit-scrollbar-thumb,
+.modal .dropdown > .items::-webkit-scrollbar-track,
+.modal .dropdown > .items::-webkit-scrollbar-thumb {
+  border-radius: 0 8px 8px 0;
+}
+
+.orders {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.order {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  justify-content: space-between;
+  border: 2px solid #184404;
+  border-radius: 16px;
+  padding: 8px;
+  width: 100%;
+  max-width: 372px;
+  position: relative;
+}
+
+.order > input {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 8px;
+  cursor: pointer;
+}
+
+.order > input.edit {
+  top: 8px;
+  background: url(/assets/img/pencil.svg) center no-repeat;
+}
+
+.order > input.delete {
+  bottom: 8px;
+  background: url(/assets/img/trash.svg) center no-repeat;
+}
+
+.order h2 {
+  font-family: "Inter-Regular";
+  font-size: 18px;
+  line-height: 21.78px;
+  text-align: left;
+  max-width: calc(100% - 32px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+}
+
+.order ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  height: 100%;
+  max-height: 96px;
+  overflow-y: auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 4px;
+}
+
+.order li,
+.order p {
+  list-style: inside;
+  list-style-type: decimal;
+  font-family: "Inter-Regular";
+  font-size: 14px;
+  text-align: left;
+}
+
+.order li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }

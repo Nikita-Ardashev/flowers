@@ -35,18 +35,17 @@ function deleteCookie(name) {
   });
 }
 
-const deleteItem = (t) => {
-  t.onclick = () => {
-    const flower = t.closest(".card-flower");
-    const cost = Number(flower.querySelector(".info .cost span").textContent);
-    const flowerId = flower.dataset.flowerId;
-    basket.textContent = Number(basket.textContent) - 1;
-    const price = document.querySelector("main .buy p b span");
-    const fullprice = Number(price.textContent) - cost;
-    price.textContent = fullprice;
-    flower.remove();
-    deleteCookie(flowerId);
-  };
+const deleteItem = (b) => {
+  const flower = b.closest(".card-flower") ?? b;
+  const cost = Number(flower.querySelector(".info .cost span").textContent);
+  const flowerId = flower.dataset.flowerId;
+  basket.textContent = Number(basket.textContent) - 1;
+  const price = document.querySelector("main .buy p b span");
+  const fullprice = Number(price.textContent) - cost;
+  price.textContent = fullprice;
+  console.log(flower);
+  flower.remove();
+  deleteCookie(flowerId);
 };
 
 const searchItem = async (box) => {
@@ -76,11 +75,19 @@ document.addEventListener("DOMContentLoaded", () => {
   basket.textContent = arrFlowers.length;
   const trashs = document.querySelectorAll(".items .trash");
 
-  trashs.forEach(deleteItem);
+  trashs.forEach((t) => {
+    t.onclick = () => {
+      deleteItem(t);
+    };
+  });
 });
 
 const postBuy = async () => {
   await fetch("/php/buy.php", {
-    method: "post",
+    method: "get",
+  });
+  const flowers = document.querySelectorAll(".card-flower");
+  flowers.forEach((f) => {
+    deleteItem(f);
   });
 };

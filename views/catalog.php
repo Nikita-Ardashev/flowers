@@ -23,18 +23,19 @@
             if ($items->num_rows > 0) {
                 while ($item = $items->fetch_assoc()) {
                     ?>
-                    <div class="card-flower" data-flower-id="flower-<?php print_r($item['id']) ?>">
-                        <a href="/views/item.php?id=<?php print_r($item['id']) ?>"> <img src="<?php print_r($item['img']) ?>"
+                    <div class="card-flower" data-flower-id="flower-<?php echo ($item['id']) ?>">
+                        <a href="/views/item.php?id=<?php echo ($item['id']) ?>"> <img src="<?php echo ($item['img']) ?>"
                                 alt="">
                         </a>
                         <div>
-                            <p><?php print_r($item['name']) ?> </p>
+                            <p><?php echo ($item['name']) ?> </p>
                             <div>
                                 <span>
                                     <?php if ($item['discount'] != null) { ?>
-                                        <p><?php print_r($item['cost'] + ($item['discount'] / 100 * $item['cost'])) ?></p>
+                                        <p><?php echo ($item['cost']) ?></p>
                                     <?php } ?>
-                                    <p><?php print_r($item['cost']) ?></p>
+                                    <p><?php echo ($item['cost'] - ($item['discount'] / 100 * $item['cost'])) ?></p>
+
                                 </span>
                                 <input type="button" class="to-basket" value="Купить">
                             </div>
@@ -51,5 +52,6 @@
     </main>
 </body>
 <script src="/js/buy.js"></script>
+<script src="/js/catalog.js"></script>
 
 </html>

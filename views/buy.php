@@ -25,8 +25,8 @@
                     <p>Количество</p>
                     <p>Цена</p>
                 </div>
-                <div class="items card-flower">
-                    <h2>В данный момент нет товров</h2>
+                <div class="items">
+                    <h2>В данный момент нет товаров</h2>
                     <?php
                     include_once ('../php/link.php');
                     $cookies = $_COOKIE;
@@ -38,26 +38,26 @@
                         }
                         $id = $arr[1];
                         $item = $link->query("SELECT * FROM `items` WHERE `id`='$id'")->fetch_assoc();
-                        $priceWithDiscount = $item['cost'] + ($item['discount'] / 100 * $item['cost']);
+                        $priceWithDiscount = $item['cost'] - ($item['discount'] / 100 * $item['cost']);
                         $lastCost += ($item['discount'] != null ? $priceWithDiscount : $item['cost']) * $value;
                         ?>
-                        <div class="item card-flower" data-flower-id="flower-<?php print_r($item['id']) ?>"
-                            data-first-cost='<?php print_r($priceWithDiscount) ?>'>
+                        <div class="item card-flower" data-flower-id="flower-<?php echo ($item['id']) ?>"
+                            data-first-cost='<?php echo ($priceWithDiscount) ?>'>
                             <input type="button" class="trash">
 
-                            <a href="/views/item.php?id=<?php print_r($item['id']) ?>" class="flower">
-                                <img src="<?php print_r($item['img']) ?>" alt="">
-                                <p><?php print_r($item['name']) ?></p>
+                            <a href="/views/item.php?id=<?php echo ($item['id']) ?>" class="flower">
+                                <img src="<?php echo ($item['img']) ?>" alt="">
+                                <p><?php echo ($item['name']) ?></p>
                             </a>
                             <div class="info">
                                 <div class="calc">
                                     <button class="minus" type='button'></button>
-                                    <input type="number" value='<?php print_r($value) ?>' min="1" max="100">
+                                    <input type="number" value='<?php echo ($value) ?>' min="1" max="100">
                                     <button class="plus" type='button'></button>
                                 </div>
                                 <p class="cost">
                                     <span><?php
-                                    print_r(($item['discount'] != null ? $priceWithDiscount : $item['cost']) * $value);
+                                    echo (($item['discount'] != null ? $priceWithDiscount : $item['cost']) * $value);
                                     ?></span> ₽
                                 </p>
                             </div>
@@ -71,7 +71,7 @@
             </div>
 
             <div class="buy">
-                <p>Итого:<b><span><?php print_r($lastCost) ?></span> ₽</b></p>
+                <p>Итого:<b><span><?php echo ($lastCost) ?></span> ₽</b></p>
                 <input type="button" value="Оформить заказ" onclick="postBuy()">
             </div>
         </div>

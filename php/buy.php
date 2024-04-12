@@ -6,7 +6,7 @@ if (! isset($_COOKIE['email'])) {
     mysqli_close($link);
     return;
 }
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $cookies = $_COOKIE;
     $email = $_COOKIE['email'];
     $isUser = $link->query("SELECT `id` FROM `users` WHERE `email`='$email'");
