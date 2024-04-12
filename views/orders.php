@@ -78,7 +78,9 @@
                             $itemQuery = $link->query("SELECT * FROM `items` WHERE `id`='$item[item_id]'")->fetch_assoc();
                             $lastCost += $itemQuery['discount'] != null ? $itemQuery['cost'] - ($itemQuery['discount'] * $itemQuery['cost'] / 100) : $itemQuery['cost'];
                             ?>
-                            <li><?php echo ($itemQuery['name'] . ' - ' . $item['count']) ?>шт <p>Дата создания:
+                            <li><?php echo ($itemQuery['name'] . ' - ' . $item['count']) ?>шт
+                                <?php echo (' ' . $itemQuery['discount'] != null ? $itemQuery['cost'] - ($itemQuery['cost'] * $itemQuery['discount'] / 100) : $itemQuery['count']) ?>₽
+                                <p>Дата создания:
                                     <?php echo ($date) ?>
                                 </p>
                             </li>
