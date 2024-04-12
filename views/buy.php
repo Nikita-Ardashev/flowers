@@ -38,10 +38,11 @@
                         }
                         $id = $arr[1];
                         $item = $link->query("SELECT * FROM `items` WHERE `id`='$id'")->fetch_assoc();
-                        $lastCost += $item['discount'] != null ? $item['cost'] + ($item['discount'] / 100 * $item['cost']) : $item['cost'] * $value;
+                        $priceWithDiscount = $item['cost'] + ($item['discount'] / 100 * $item['cost']);
+                        $lastCost += ($item['discount'] != null ? $priceWithDiscount : $item['cost']) * $value;
                         ?>
                         <div class="item card-flower" data-flower-id="flower-<?php print_r($item['id']) ?>"
-                            data-first-cost='<?php print_r($item['cost']) ?>'>
+                            data-first-cost='<?php print_r($priceWithDiscount) ?>'>
                             <input type="button" class="trash">
 
                             <a href="/views/item.php?id=<?php print_r($item['id']) ?>" class="flower">
@@ -56,7 +57,7 @@
                                 </div>
                                 <p class="cost">
                                     <span><?php
-                                    print_r($item['discount'] != null ? $item['cost'] + ($item['discount'] / 100 * $item['cost']) : $item['cost']);
+                                    print_r(($item['discount'] != null ? $priceWithDiscount : $item['cost']) * $value);
                                     ?></span> ₽
                                 </p>
                             </div>

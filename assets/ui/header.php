@@ -28,7 +28,7 @@
                 62</span></a>
         <a href="tel:+79124584746" class="number"><img src="/assets/img/phone.svg" alt="phone">+7 (912) 458 47 46</a>
         <div class="search">
-            <input type="text" placeholder="Найти букетик">
+            <input type="text" value="<?php print_r($_GET['search'] ?? '') ?>" placeholder="Найти букетик">
             <button><img src="/assets/img/search.svg" alt="search"></button>
         </div>
         <a href="/views/buy.php" class="buy"><img src="/assets/img/buy.svg" alt="buy"><span>0</span></a>
