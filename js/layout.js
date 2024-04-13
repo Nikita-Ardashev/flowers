@@ -43,7 +43,6 @@ const deleteItem = (b) => {
   const price = document.querySelector("main .buy p b span");
   const fullprice = Number(price.textContent) - cost;
   price.textContent = fullprice;
-  console.log(flower);
   flower.remove();
   deleteCookie(flowerId);
 };

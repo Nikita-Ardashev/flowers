@@ -24,38 +24,9 @@ const dropdown = (d) => {
 
 dropdowns.forEach(dropdown);
 
-const viewModalBoxes = (id) => {
-  const cardProps =
-    document.querySelector(`.card[data-card-id='${id}']`) ?? null;
-  const view = (className) => {
-    const modal = document.querySelector(`.${className}`);
-    const modalBox = modal.closest(".modal-box");
-    const closeBtns = modal.querySelectorAll(".modal input.close");
-    const notView = () => {
-      modalBox.style.display = null;
-    };
-    modalBox.style.display = "flex";
-    modalBox.onmousedown = (e) => {
-      const t = e.target;
-      const ct = e.currentTarget;
-      if (t === ct) {
-        notView();
-      }
-    };
-    closeBtns.forEach((b) => {
-      b.addEventListener("click", notView);
-    });
-  };
-};
-
-const openModal = (btn) => {
-  const id = btn.closest(".card-flower").dataset.flowerId;
-  viewModalBoxes(id);
-};
-
 const orders = document.querySelectorAll(".order");
 
-const deleteOrder = (order) => {
+const isDelete = (order) => {
   const btn = order.querySelector(".delete input");
   btn.addEventListener("change", () => {
     if (btn.checked) {
@@ -66,7 +37,7 @@ const deleteOrder = (order) => {
   });
 };
 
-const editOrder = (order) => {
+const isEdit = (order) => {
   const btn = order.querySelector(".edit input");
   const editCost = order.querySelectorAll('input[type="number"]');
   const setRead = (isRead, box) => {
@@ -88,8 +59,8 @@ const editOrder = (order) => {
 };
 
 const orderAdmin = (order) => {
-  deleteOrder(order);
-  editOrder(order);
+  isDelete(order);
+  isEdit(order);
 };
 
 orders.forEach(orderAdmin);
@@ -134,4 +105,29 @@ const editCount = (count) => {
   });
 };
 
+const deleteBtn = document.querySelectorAll(".orders input.delete-order");
+
+const deleteOrder = (btn) => {
+  const boxLi = btn.closest("li");
+  const orderId = boxLi.dataset.orderId;
+  btn.addEventListener("click", async () => {
+    const allOrderLength = btn.closest("ul").querySelectorAll("li").length;
+    const orderBox = btn.closest(".order");
+    await fetch(`/php/deleteOrder.php?id=${orderId}`, {
+      method: "get",
+    })
+      .catch((e) => {
+        console.error(e);
+      })
+      .finally(() => {
+        if (allOrderLength <= 1) {
+          orderBox.remove();
+        } else {
+          boxLi.remove();
+        }
+      });
+  });
+};
+
 countBoxes.forEach(editCount);
+deleteBtn.forEach(deleteOrder);
