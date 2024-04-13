@@ -56,20 +56,6 @@ main > form > p {
   width: -webkit-fill-available;
 }
 
-main label {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-}
-
-main label input {
-  background: white;
-  border: 1px solid black;
-  width: 16px;
-  height: 16px;
-}
-
 main input[type="submit"] {
   font-family: "ABeeZee";
   font-size: 20px;

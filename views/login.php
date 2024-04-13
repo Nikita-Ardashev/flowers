@@ -25,10 +25,6 @@
                     <input type="password" name="password" autocomplete='current-password' placeholder="Пароль"
                         autocomplete="current-password">
                 </div>
-                <label>
-                    <input type="checkbox">
-                    <p>Запомнить меня</p>
-                </label>
             </div>
             <input type="submit" value="Войти">
         </form>

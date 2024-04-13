@@ -5,13 +5,17 @@ main {
 main .filter {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   gap: 16px;
   width: 100%;
   justify-content: flex-start;
 }
 
-main .dropdown {
+.reset-filter {
+  width: 16px;
+  background: url(/assets/img/close.svg) center no-repeat;
+  background-size: 16px;
+  cursor: pointer;
 }
 
 .dropdown {
@@ -23,7 +27,26 @@ main .dropdown {
   z-index: 10;
 }
 
-.dropdown label {
+.filter-time {
+  gap: 8px;
+}
+
+.filter-time > p {
+  display: flex;
+  font-family: "Inter-Regular";
+  font-size: 14px;
+  line-height: 16.94px;
+  text-align: left;
+}
+
+.filter-time input::-webkit-calendar-picker-indicator {
+  margin-left: -20px;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.dropdown label,
+.filter-time {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -34,7 +57,8 @@ main .dropdown {
   cursor: pointer;
 }
 
-.dropdown label input {
+.dropdown label input,
+.filter-time input {
   padding: 0 !important;
   background: none !important;
   overflow: hidden;

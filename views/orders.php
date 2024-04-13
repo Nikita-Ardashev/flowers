@@ -11,40 +11,37 @@
 <body>
     <?php
     include_once ('../assets/ui/header.php');
+    include_once ('../php/link.php');
+    $email = $_COOKIE['email'];
+    $isAdmin = $link->query("SELECT * FROM `users` WHERE `is_admin`='1' AND `email`='$email'")->fetch_assoc();
+    if ($isAdmin == null) {
+        header('Location: /');
+        exit;
+    }
     ?>
     <main>
         <div class="filter">
-            <div class="dropdown">
+            <div class="dropdown filter-type">
                 <label>
                     <input type="button" value="По статусу">
                     <img src="/assets/img/arrow.svg" alt="">
                 </label>
                 <div class="items">
-                    <span>1</span>
+                    <span>В ожидании</span>
+                    <span>В работе</span>
+                    <span>Выполнен</span>
                 </div>
             </div>
-            <div class="dropdown">
-                <label>
-                    <input type="button" value="По дате заказа">
-                    <img src="/assets/img/arrow.svg" alt="">
-                </label>
-                <div class="items">
-                    <span>2</span>
-                </div>
+            <div class="filter-time">
+                <p>По дате: </p>
+                <input type="date" class="first">
+                <p>-</p>
+                <input type="date" class="last">
             </div>
-            <div class="dropdown">
-                <label>
-                    <input type="button" value="По исполнителю">
-                    <img src="/assets/img/arrow.svg" alt="">
-                </label>
-                <div class="items">
-                    <span>3</span>
-                </div>
-            </div>
+            <input type="button" class="reset-filter">
         </div>
         <div class="orders">
             <?php
-            include_once ('../php/link.php');
             $ordersQuery = $link->query("SELECT * FROM `purchase`");
             $data = mysqli_fetch_all($ordersQuery, MYSQLI_ASSOC);
             $result = array_reduce($data, function ($acc, $item) {
@@ -59,7 +56,6 @@
             foreach ($orders as $order) {
                 $onlyUser = $order[0];
                 $user = $link->query("SELECT * FROM `users` WHERE `id`='$onlyUser[user_id]'")->fetch_assoc();
-                $date = $order[0]['created_at'];
                 ?>
                 <div class="modal-box">
                     <div class="modal">
@@ -82,15 +78,19 @@
                             $itemQuery = $link->query("SELECT * FROM `items` WHERE `id`='$item[item_id]'")->fetch_assoc();
                             $cost = ($itemQuery['discount'] != null ? $itemQuery['cost'] - ($itemQuery['cost'] * $itemQuery['discount'] / 100) : $itemQuery['cost']);
                             $lastCost += $cost * $item['count'];
+                            $date = date('Y-m-d', strtotime($item['created_at']));
                             ?>
-                            <li data-order-id="<?php echo ($item['id']) ?>">
+                            <li data-order-id="<?php echo ($item['id']) ?>" data-date='<?php echo ($date) ?>'
+                                data-type="<?php echo ($item['type']) ?>">
                                 <p> <input type="button" class="delete-order">
                                     <?php echo ($itemQuery['name']) ?><input type="number" data-cost="<?php echo ($cost) ?>"
                                         readonly min="1" max="100" value="<?php echo $item['count'] ?>">шт -
                                     <span><?php echo ($cost * $item['count']) ?></span>₽
                                 </p>
-                                <p>Дата создания:
-                                    <?php echo ($date) ?>
+                                <p>
+                                    Создан:
+                                    <?php echo ($date) ?> |
+                                    <?php echo ($item['type']) ?>
                                 </p>
                             </li>
                             <?php
