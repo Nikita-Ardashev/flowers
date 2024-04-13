@@ -68,18 +68,27 @@
                     </div>
                 </div>
                 <div class="order">
-                    <input type="button" class="edit">
-                    <input type="button" class="delete">
+                    <label class="edit">
+                        <input type="checkbox" hidden>
+                    </label>
+                    <label class="delete">
+                        <input type="checkbox" hidden>
+                    </label>
                     <h2><?php echo ($user['email']) ?></h2>
                     <ul>
                         <?php
                         $lastCost = 0;
                         foreach ($order as $item) {
                             $itemQuery = $link->query("SELECT * FROM `items` WHERE `id`='$item[item_id]'")->fetch_assoc();
-                            $lastCost += $itemQuery['discount'] != null ? $itemQuery['cost'] - ($itemQuery['discount'] * $itemQuery['cost'] / 100) : $itemQuery['cost'];
+                            $cost = ($itemQuery['discount'] != null ? $itemQuery['cost'] - ($itemQuery['cost'] * $itemQuery['discount'] / 100) : $itemQuery['cost']);
+                            $lastCost += $cost * $item['count'];
                             ?>
-                            <li><?php echo ($itemQuery['name'] . ' - ' . $item['count']) ?>шт
-                                <?php echo (' ' . $itemQuery['discount'] != null ? $itemQuery['cost'] - ($itemQuery['cost'] * $itemQuery['discount'] / 100) : $itemQuery['count']) ?>₽
+                            <li data-order-id="<?php echo ($item['id']) ?>">
+                                <p> <input type="button" class="delete-order">
+                                    <?php echo ($itemQuery['name']) ?><input type="number" data-cost="<?php echo ($cost) ?>"
+                                        readonly min="1" max="100" value="<?php echo $item['count'] ?>">шт -
+                                    <span><?php echo ($cost * $item['count']) ?></span>₽
+                                </p>
                                 <p>Дата создания:
                                     <?php echo ($date) ?>
                                 </p>
@@ -87,7 +96,7 @@
                             <?php
                         } ?>
                     </ul>
-                    <p>Стоимость <?php echo ($lastCost) ?> ₽</p>
+                    <p class="last-cost">Стоимость <span><?php echo ($lastCost) ?></span> ₽</p>
                 </div>
                 <?php
             }

@@ -167,7 +167,7 @@ main .dropdown {
   position: relative;
 }
 
-.order > input {
+.order > label {
   position: absolute;
   width: 20px;
   height: 20px;
@@ -175,12 +175,12 @@ main .dropdown {
   cursor: pointer;
 }
 
-.order > input.edit {
+.order > label.edit {
   top: 8px;
   background: url(/assets/img/pencil.svg) center no-repeat;
 }
 
-.order > input.delete {
+.order > label.delete {
   bottom: 8px;
   background: url(/assets/img/trash.svg) center no-repeat;
 }
@@ -206,22 +206,57 @@ main .dropdown {
   max-height: 96px;
   overflow-y: auto;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 4px;
 }
 
 .order li,
 .order p {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   list-style: inside;
   list-style-type: decimal;
   font-family: "Inter-Regular";
   font-size: 14px;
   text-align: left;
+  gap: 4px;
 }
 
 .order li {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  padding: 4px;
   justify-content: space-between;
-  width: 100%;
+  width: -webkit-fill-available;
+}
+
+.order li input[type="number"] {
+  text-align: center;
+  width: max-content;
+  max-width: 32px;
+  background: transparent;
+  border: 2px solid #184404;
+}
+
+.order li input[type="number"]:read-only {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  cursor: unset;
+}
+
+.order li input[type="number"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+.order .delete-order {
+  display: none;
+  width: 12px;
+  height: 12px;
+  background: url(/assets/img/trash.svg) center no-repeat;
+  background-size: 12px;
+  cursor: pointer;
+}
+
+.order.d .delete-order {
+  display: flex;
+}
+
+.order.d li:hover {
+  background: rgba(0, 0, 0, 0.1);
 }
