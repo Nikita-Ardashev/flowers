@@ -8,9 +8,20 @@
         <div>
             <?php
             if (isset($_COOKIE['email'])) {
-                ?>
-                <a href="/php/logout.php">Выйти из аккаунта</a>
-                <?php
+                $link = mysqli_connect('localhost', 'root', '', 'flowers');
+                $email = $_COOKIE['email'];
+                $isAdmin = $link->query("SELECT * FROM `users` WHERE `email`='$email' AND `is_admin`='1'")->fetch_assoc();
+                if ($isAdmin == null || count($isAdmin) == 0) {
+                    ?>
+                    <a href="/php/logout.php">Выйти из аккаунта</a>
+                    <?php
+                } else {
+                    ?>
+                    <a href="/views/orders.php">Заказы</a>
+                    <a href="/php/logout.php">Выйти из аккаунта</a>
+                    <?php
+                }
+                mysqli_close($link);
             } else {
                 ?>
                 <a href="/views/login.php">Вход</a>

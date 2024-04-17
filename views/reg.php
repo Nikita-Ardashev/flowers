@@ -15,25 +15,21 @@
     ?>
     <main>
         <h1>Регистрация</h1>
-        <form action='/php/reg.php' method="post" autocomplete="on">
+        <div class="form">
             <div class="fields">
                 <div class="field">
                     <p>E-mail:</p>
                     <input type="text" name="email" autocomplete="email" placeholder="Почта">
                 </div>
                 <div class="field">
-                    <p>Пароль:</p>
-                    <input type="password" name="password" autocomplete='new-password' placeholder="Пароль">
-                </div>
-                <!-- <div class="field">
-                    <p>Подтверждение пароля:</p>
-                    <input type="password" name="password" autocomplete='confirm-password'
-                        placeholder="Подтверждение пароля">
-                </div> -->
-                <div class="field">
                     <p>Телефон:</p>
                     <input type="tel" name="tel" autocomplete='tel' placeholder="Телефон">
                 </div>
+                <div class="field">
+                    <p>Пароль:</p>
+                    <input type="password" name="password" autocomplete='new-password' placeholder="Пароль">
+                </div>
+                <p class="error"></p>
             </div>
             <p>
                 Пароль должен быть не менее 6 символов длиной.<br />
@@ -42,8 +38,9 @@
                 настоящего Пользовательского соглашения.</p>
 
             <input type="submit" value="Регистрация">
-        </form>
+        </div>
     </main>
 </body>
+<script src="/js/reg.js"></script>
 
 </html>

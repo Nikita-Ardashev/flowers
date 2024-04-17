@@ -17,13 +17,13 @@ main p {
   line-height: 15.37px;
   text-align: left;
 }
-main > form {
+main > .form {
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
 
-main > form > p {
+main > .form > p {
   max-width: 100%;
 }
 
@@ -73,4 +73,44 @@ main input[type="submit"] {
 main input[type="submit"]:hover {
   background: black;
   color: white;
+}
+
+main .error {
+  opacity: 0;
+  font-family: "Inter-Regular";
+  font-size: 16px;
+  line-height: 18.15px;
+  text-align: left;
+  color: red;
+}
+
+@keyframes voidField {
+  0% {
+    border: 1px solid #e35656;
+  }
+  80% {
+    border: 1px solid #e35656;
+  }
+  100% {
+    border: 1px solid black;
+  }
+}
+
+@keyframes validation {
+  0% {
+    color: #e35656;
+  }
+  80% {
+    color: #e35656;
+  }
+  100% {
+    color: black;
+  }
+}
+
+.void-field {
+  animation: voidField 5s;
+}
+.error-validation {
+  animation: validation 5s forwards;
 }

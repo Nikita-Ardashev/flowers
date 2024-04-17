@@ -14,7 +14,7 @@
     ?>
     <main>
         <h1>Авторизация</h1>
-        <form action="/php/login.php" method="post" autocomplete="on">
+        <div class="form">
             <div class="fields">
                 <div class="field">
                     <p>E-mail:</p>
@@ -25,10 +25,12 @@
                     <input type="password" name="password" autocomplete='current-password' placeholder="Пароль"
                         autocomplete="current-password">
                 </div>
+                <p class='error'>Неправильный email или пароль</p>
             </div>
             <input type="submit" value="Войти">
-        </form>
+        </div>
     </main>
 </body>
+<script src="/js/login.js"></script>
 
 </html>
